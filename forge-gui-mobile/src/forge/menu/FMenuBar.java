@@ -77,6 +77,10 @@ public class FMenuBar extends Header {
     @Override
     protected void doLayout(float width, float height) {
         width -= trailingWidth;
+        if (isIconMode()) {
+            layoutIcons(width, height);
+            return;
+        }
         int visibleTabCount = 0;
         float minWidth = 0;
         int iconOnlyTabCount = 0;
