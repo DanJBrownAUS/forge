@@ -40,7 +40,8 @@ public class AssetsDownloader {
             return;
         final String versionString = Forge.getDeviceAdapter().getVersionString();
         Forge.getSplashScreen().getProgressBar().setDescription("Checking for updates...");
-        if (versionString.contains("GIT")) {
+        // local builds can opt out so they aren't offered the official snapshot over themselves
+        if (versionString.contains("GIT") || Boolean.getBoolean("forge.skipUpdateCheck")) {
             if (!GuiBase.isAndroid()) {
                 run(runnable);
                 return;
